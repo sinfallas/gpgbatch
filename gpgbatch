@@ -5,14 +5,21 @@ LC_ALL=C
 trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
 echo "$BASHPID" > /run/$(basename $0).pid
 
+if [[ $(locale | grep LANG= | cut -c 6-16) != "es_VE.UTF-8" ]]; then
+	echo "ERROR: Este script no puede ejecutarse en este ordenador."
+	exit 1
+fi
+
 function pause() {
 	read -p "$*"
 }
 
 pause "Presione cualquier tecla para iniciar o Ctrl + C para finalizar..."
 
-if [[ -d /tmp/datos.txt ]]; then
+if [[ -d /tmp/llaves ]]; then
 	rm -rf /tmp/llaves/*
+	rm -f /tmp/genkey
+	rm -f /tmp/listo
 else
 	mkdir -p /tmp/llaves
 fi
