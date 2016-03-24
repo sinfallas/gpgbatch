@@ -1,4 +1,23 @@
-commit 08faf9fc836d440087b9eaabc9b13465c823a070 (HEAD, origin/master, origin/HEAD, master)
+commit 20b5b0e1d8b2d6086399188d30f30c0327a40fa7 (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Wed Mar 23 21:56:40 2016 -0430
+
+    * casi
+
+commit 38c51872b854bf03f9349d1566319c5b26173933
+Author: jose perez <sinfallas@gmail.com>
+Date:   Wed Mar 23 21:16:18 2016 -0430
+
+    * se coloca comprobacion de la carpeta
+    * algo de limpieza
+
+commit 524b80ea5e0fea14709e5ef5c2e259b3af78748d
+Author: jose perez <sinfallas@gmail.com>
+Date:   Wed Mar 23 21:02:05 2016 -0430
+
+    * changelog
+
+commit 08faf9fc836d440087b9eaabc9b13465c823a070
 Author: jose perez <sinfallas@gmail.com>
 Date:   Wed Mar 23 21:01:44 2016 -0430
 
