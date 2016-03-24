@@ -1,10 +1,22 @@
-commit cb29d0ced840c86d1d1f89e23fce1580b813cab3 (HEAD, origin/master, origin/HEAD, master)
+commit 08faf9fc836d440087b9eaabc9b13465c823a070 (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Wed Mar 23 21:01:44 2016 -0430
+
+    * se crea el bucle y la estructura general del script
+
+commit 3c3ac7b86109564148155445ad235758877082ab
+Author: jose perez <sinfallas@gmail.com>
+Date:   Wed Mar 23 00:32:07 2016 -0430
+
+    * changelog
+
+commit cb29d0ced840c86d1d1f89e23fce1580b813cab3
 Author: jose perez <sinfallas@gmail.com>
 Date:   Wed Mar 23 00:31:56 2016 -0430
 
     * doi
 
-commit de7a5c78c6ae330726fe644c5fc8998882b106af
+commit de7a5c78c6ae330726fe644c5fc8998882b106af (tag: v0.1)
 Author: jose perez <sinfallas@gmail.com>
 Date:   Wed Mar 23 00:28:26 2016 -0430
 
