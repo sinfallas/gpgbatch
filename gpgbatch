@@ -9,9 +9,7 @@ function pause() {
 	read -p "$*"
 }
 
-if [[ -z $2 ]]; then
-	echo -e "\e[00;31mERROR: Faltan parametros.\e[00m"
-fi
+pause "Presione cualquier tecla para iniciar o Ctrl + C para finalizar..."
 
 if [[ -d /tmp/datos.txt ]]; then
 	rm -rf /tmp/llaves/*
@@ -25,37 +23,29 @@ if [[ -f /tmp/datos.txt ]]; then
 		name=$(echo $i | cut -d ":" -f2)
 		last=$(echo $i | cut -d ":" -f3)
 		email=$(echo $i | cut -d ":" -f4)
-		expire=$(echo $i | cut -d ":" -f5)
 		echo 'Key-Type: 1' > /tmp/genkey
 		echo 'Key-Length:' $long >> /tmp/genkey
 		echo 'Subkey-Type: 1' >> /tmp/genkey
 		echo 'Subkey-Length:' $long >> /tmp/genkey
 		echo 'Name-Real:' $name $last >> /tmp/genkey
 		echo 'Name-Email:' $email >> /tmp/genkey
-		echo 'Expire-Date:' $expire >> /tmp/genkey
+		echo 'Expire-Date: 2y' >> /tmp/genkey
 		script -q /dev/stdout -c 'gpg --batch --gen-key /tmp/genkey' | tee /tmp/listo
 		millave=$(cat /tmp/listo | grep "gpg: clave" | uniq | awk '{print $3}')
-		# exportar llaves
+		gpg --export-secret-key -a $millave > /tmp/llaves/$name.$last.private.key
+		gpg --export -a $millave > /tmp/llaves/$name.$last.public.key
+		# gpg --output /tmp/llaves/$name.$last.revoke.asc --gen-revoke 0x$millave
+		if [[ $1 = enviar ]]; then
+			gpg --send-keys --keyserver keyserver.ubuntu.com $millave
+		fi
 		rm -f /tmp/genkey
 		rm -f /tmp/listo
-		
 	done
 else
 	echo "ERROR: El archivo /tmp/datos.txt no existe"
 fi
 
-
-
-
-
-export GPGKEY=$millave
-echo ""
-echo -e "\e[00;1;92mLlave GPG Generada.\e[00m"
-gpg --send-keys --keyserver keyserver.ubuntu.com $millave
-echo ""
-echo -e "\e[00;1;92mSe envio al keyserver de Ubuntu la siguiente llave: $millave\e[00m"
-mihuella=$(gpg --fingerprint $millave | grep "Huella de clave" | cut -c 25-74)
-echo -e "\e[00;1;92mFinalizado...\e[00m"
+echo "Finalizado..."
 
 rm -f /run/$(basename $0).pid
 exit 0
