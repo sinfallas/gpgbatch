@@ -5,10 +5,6 @@ LC_ALL=C
 trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
 echo "$BASHPID" > /run/$(basename $0).pid
 
-if [[ "$EUID" != "0" ]]; then
-	echo -e "\e[00;31mERROR: Debe ser root.\e[00m"
-fi
-
 function pause() {
 	read -p "$*"
 }
@@ -16,17 +12,38 @@ function pause() {
 if [[ -z $2 ]]; then
 	echo -e "\e[00;31mERROR: Faltan parametros.\e[00m"
 fi
-echo -e "\e[00;1;92mPreparandose para generar llave GPG\e[00m"
-echo 'Key-Type: 1' > /tmp/genkey
-echo 'Key-Length: 2048' >> /tmp/genkey
-echo 'Subkey-Type: 1' >> /tmp/genkey
-echo 'Subkey-Length: 2048' >> /tmp/genkey
-echo 'Name-Real:' $2 $3 >> /tmp/genkey
-echo 'Name-Email:' $4 >> /tmp/genkey
-echo 'Expire-Date: 2y' >> /tmp/genkey
-echo -e "\e[00;1;92mGenerando llave GPG\e[00m"
-script -q /dev/stdout -c 'gpg --batch --gen-key /tmp/genkey' | tee /tmp/listo
-millave=$(cat /tmp/listo | grep "gpg: clave" | uniq | awk '{print $3}')
+
+
+#limpiar
+# crear carpetas necesarias
+
+
+if [[ -f /tmp/datos.txt ]]; then
+	for i in $(cat /tmp/datos.txt); do
+		long=$(echo $i | cut -d ":" -f1)
+		name=$(echo $i | cut -d ":" -f2)
+		last=$(echo $i | cut -d ":" -f3)
+		email=$(echo $i | cut -d ":" -f4)
+		expire=$(echo $i | cut -d ":" -f5)
+		echo 'Key-Type: 1' > /tmp/genkey
+		echo 'Key-Length:' $long >> /tmp/genkey
+		echo 'Subkey-Type: 1' >> /tmp/genkey
+		echo 'Subkey-Length:' $long >> /tmp/genkey
+		echo 'Name-Real:' $name $last >> /tmp/genkey
+		echo 'Name-Email:' $email >> /tmp/genkey
+		echo 'Expire-Date:' $expire >> /tmp/genkey
+		script -q /dev/stdout -c 'gpg --batch --gen-key /tmp/genkey' | tee /tmp/listo
+		millave=$(cat /tmp/listo | grep "gpg: clave" | uniq | awk '{print $3}')
+		rm -f /tmp/listo
+		# exportar llaves
+		
+	done
+else
+	echo "ERROR: El archivo /tmp/datos.txt no existe"
+fi
+
+
+
 export GPGKEY=$millave
 echo ""
 echo -e "\e[00;1;92mLlave GPG Generada.\e[00m"
