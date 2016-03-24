@@ -1,4 +1,24 @@
-commit 20b5b0e1d8b2d6086399188d30f30c0327a40fa7 (HEAD, origin/master, origin/HEAD, master)
+commit fc1bc855fc1420c88b1c47f2fee2c22351f1f169 (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Thu Mar 24 00:37:00 2016 -0430
+
+    * se crea el archivo de ejemplo de datos.txt
+    * se agrega el archivo misc.txt
+    * se pulen casi todos los detalles que faltan
+
+commit fc27d82ad0cfed7257065b727514a24f5d1338fd
+Author: jose perez <sinfallas@gmail.com>
+Date:   Wed Mar 23 22:08:02 2016 -0430
+
+    * bugfix
+
+commit 87a5cce9a78e18a72cd09f90001e6ec337eaf455
+Author: jose perez <sinfallas@gmail.com>
+Date:   Wed Mar 23 21:56:51 2016 -0430
+
+    * changelog
+
+commit 20b5b0e1d8b2d6086399188d30f30c0327a40fa7
 Author: jose perez <sinfallas@gmail.com>
 Date:   Wed Mar 23 21:56:40 2016 -0430
 
