@@ -13,10 +13,11 @@ if [[ -z $2 ]]; then
 	echo -e "\e[00;31mERROR: Faltan parametros.\e[00m"
 fi
 
-
-#limpiar
-# crear carpetas necesarias
-
+if [[ -d /tmp/datos.txt ]]; then
+	rm -rf /tmp/llaves/*
+else
+	mkdir -p /tmp/llaves
+fi
 
 if [[ -f /tmp/datos.txt ]]; then
 	for i in $(cat /tmp/datos.txt); do
@@ -34,13 +35,16 @@ if [[ -f /tmp/datos.txt ]]; then
 		echo 'Expire-Date:' $expire >> /tmp/genkey
 		script -q /dev/stdout -c 'gpg --batch --gen-key /tmp/genkey' | tee /tmp/listo
 		millave=$(cat /tmp/listo | grep "gpg: clave" | uniq | awk '{print $3}')
-		rm -f /tmp/listo
 		# exportar llaves
+		rm -f /tmp/genkey
+		rm -f /tmp/listo
 		
 	done
 else
 	echo "ERROR: El archivo /tmp/datos.txt no existe"
 fi
+
+
 
 
 
