@@ -1,4 +1,30 @@
-commit e0684db2e3a19952cf48e3d6775f3ca24f2c02fb (HEAD, origin/master, origin/HEAD, master)
+commit 9d715b723adbb632abf6870fb1a93419371e8dc5 (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Mar 25 00:24:34 2016 -0430
+
+    * bugfix
+
+commit 39e05e9bd1654a1619df51ca900a83eb76863167
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Mar 25 00:21:37 2016 -0430
+
+    * se mejora la explicacion
+
+commit c42a56ef257e3fc234dc58584d16ba96e3cac7b8
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Mar 25 00:19:39 2016 -0430
+
+    * se mejoran los ejemplos
+    * se coloca un ejemplo en el readme.md
+    * se coloca una variable para pasar el vencimiento de la llave
+
+commit 3c800a484b529e824c00739f8f3a2f7ccc16573a
+Author: jose perez <sinfallas@gmail.com>
+Date:   Thu Mar 24 21:51:08 2016 -0430
+
+    * changelog
+
+commit e0684db2e3a19952cf48e3d6775f3ca24f2c02fb
 Author: jose perez <sinfallas@gmail.com>
 Date:   Thu Mar 24 21:50:33 2016 -0430
 
