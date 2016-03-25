@@ -43,6 +43,11 @@ if [[ -f /tmp/datos.txt ]]; then
 		# gpg -a -o /tmp/llaves/$name.$last.revoke.asc --command-fd 0 --status-fd 2 --gen-revoke 0x$millave
 		if [[ $1 = enviar ]]; then
 			gpg --keyserver pgp.mit.edu --send-keys $millave
+			gpg --keyserver pool.sks-keyservers.net --send-keys $millave
+			gpg --keyserver keyring.debian.org --send-key $millave
+			gpg --keyserver keyserver.ubuntu.com --send-keys $millave
+			gpg --keyserver keys.fedoraproject.org --send-keys $millave
+			gpg --keyserver pgp.uni-mainz.de --send-keys $millave
 		fi
 		rm -f /tmp/genkey
 		rm -f /tmp/listo
