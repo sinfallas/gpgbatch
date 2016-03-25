@@ -1,4 +1,16 @@
-commit fc1bc855fc1420c88b1c47f2fee2c22351f1f169 (HEAD, origin/master, origin/HEAD, master)
+commit ae912960f1c334a9bf94016ae659fa4a34f739cd (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Thu Mar 24 20:43:03 2016 -0430
+
+    * se actualiza el archivo de ejemplos
+
+commit 85190114eddcd89b08fc8c96a81bb6967531a724
+Author: jose perez <sinfallas@gmail.com>
+Date:   Thu Mar 24 00:37:55 2016 -0430
+
+    * changelog
+
+commit fc1bc855fc1420c88b1c47f2fee2c22351f1f169
 Author: jose perez <sinfallas@gmail.com>
 Date:   Thu Mar 24 00:37:00 2016 -0430
 
