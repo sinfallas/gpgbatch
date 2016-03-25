@@ -1,4 +1,16 @@
-commit e3db35dfae922db10f3112f1ceaffe56ec8ec66b (HEAD, origin/master, origin/HEAD, master)
+commit 3775d0c25948547e7e4b3956ae3b9c3b5dad3fd7 (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Mar 25 15:27:29 2016 -0430
+
+    * se agregan mas servidores para enviar la llave
+
+commit 770465e73bd6e75e0d7c83d0041ba9cf2ddf5ffc
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Mar 25 12:41:09 2016 -0430
+
+    * changelog
+
+commit e3db35dfae922db10f3112f1ceaffe56ec8ec66b
 Author: jose perez <sinfallas@gmail.com>
 Date:   Fri Mar 25 12:40:54 2016 -0430
 
