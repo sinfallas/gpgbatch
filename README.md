@@ -15,3 +15,9 @@ Ejemplo:
 ```bash
 2048:jose:perez:casa@casa.com:2y:miclave1234
 ```
+
+Si desea que las llaves publicas en envien al servidor pgp.mit.edu debe ejecutar el script de la siguiente forma
+
+```bash
+./gpgbatch enviar
+```
