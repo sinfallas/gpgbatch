@@ -49,6 +49,7 @@ if [[ -f /tmp/datos.txt ]]; then
 	done
 else
 	echo "ERROR: El archivo /tmp/datos.txt no existe."
+	exit 1
 fi
 
 echo "Proceso finalizado, vaya a /tmp/llaves para ver los archivos."
