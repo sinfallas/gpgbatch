@@ -5,11 +5,6 @@ LC_ALL=C
 trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
 echo "$BASHPID" > /run/$(basename $0).pid
 
-if [[ $(locale | grep LANG= | cut -c 6-16) != "es_VE.UTF-8" ]]; then
-	echo "ERROR: Este script no puede ejecutarse en este ordenador."
-	exit 1
-fi
-
 function pause() {
 	read -p "$*"
 }
@@ -40,11 +35,13 @@ if [[ -f /tmp/datos.txt ]]; then
 		echo 'Name-Email:' $email >> /tmp/genkey
 		echo 'Expire-Date: 2y' >> /tmp/genkey
 		echo 'Passphrase:' $pass >> /tmp/genkey
+		echo '%pubring $name.$last.pub' >> /tmp/genkey
+		echo '%secring $name.$last.sec' >> /tmp/genkey
 		script -q /dev/stdout -c 'gpg --batch --gen-key /tmp/genkey' | tee /tmp/listo
 		millave=$(cat /tmp/listo | grep "gpg: clave" | uniq | awk '{print $3}')
 		gpg --export-secret-key -a $millave > /tmp/llaves/$name.$last.private.key
 		gpg --export -a $millave > /tmp/llaves/$name.$last.public.key
-		# gpg --output /tmp/llaves/$name.$last.revoke.asc --gen-revoke 0x$millave
+		# gpg -a -o /tmp/llaves/$name.$last.revoke.asc --command-fd 0 --status-fd 2 --gen-revoke 0x$millave
 		if [[ $1 = enviar ]]; then
 			gpg --send-keys --keyserver keyserver.ubuntu.com $millave
 		fi
@@ -55,7 +52,7 @@ else
 	echo "ERROR: El archivo /tmp/datos.txt no existe"
 fi
 
-echo "Finalizado..."
+echo "Proceso finalizado, vaya a /tmp/llaves para ver los archivos..."
 
 rm -f /run/$(basename $0).pid
 exit 0
