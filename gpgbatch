@@ -2,8 +2,6 @@
 # Made by Jesus Palencia
 # Licence: GPL-2
 LC_ALL=C
-trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
-echo "$BASHPID" > /run/$(basename $0).pid
 
 function pause() {
 	read -p "$*"
@@ -55,5 +53,4 @@ fi
 
 echo "Proceso finalizado, vaya a /tmp/llaves para ver los archivos."
 
-rm -f /run/$(basename $0).pid
 exit 0
