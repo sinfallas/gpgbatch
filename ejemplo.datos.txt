@@ -1,2 +1,3 @@
-2048:jose:perez:casa@casa.com:miclave1234
-4096:pedro:fermin:pferm@mail.com:aedg34df
+2048:jose:perez:casa@casa.com:2y:miclave1234
+3072:carlos:gonzales:loco@mail.com:6w:hg45ag45
+4096:pedro:fermin:pferm@mail.com:0:aedg34df

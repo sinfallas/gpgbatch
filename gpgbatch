@@ -25,7 +25,8 @@ if [[ -f /tmp/datos.txt ]]; then
 		name=$(echo $i | cut -d ":" -f2)
 		last=$(echo $i | cut -d ":" -f3)
 		email=$(echo $i | cut -d ":" -f4)
-		pass=$(echo $i | cut -d ":" -f5)
+		expi=$(echo $i | cut -d ":" -f5)
+		pass=$(echo $i | cut -d ":" -f6)
 		echo 'Key-Type: 1' > /tmp/genkey
 		echo 'Key-Length:' $long >> /tmp/genkey
 		echo 'Subkey-Type: 1' >> /tmp/genkey
@@ -33,26 +34,26 @@ if [[ -f /tmp/datos.txt ]]; then
 		echo 'Name-Real:' $name $last >> /tmp/genkey
 		echo 'Name-Comment: No comment' >> /tmp/genkey
 		echo 'Name-Email:' $email >> /tmp/genkey
-		echo 'Expire-Date: 2y' >> /tmp/genkey
+		echo 'Expire-Date:' $expi >> /tmp/genkey
 		echo 'Passphrase:' $pass >> /tmp/genkey
-		echo '%pubring $name.$last.pub' >> /tmp/genkey
-		echo '%secring $name.$last.sec' >> /tmp/genkey
+		echo '%pubring' $name.$last.pub >> /tmp/genkey
+		echo '%secring' $name.$last.sec >> /tmp/genkey
 		script -q /dev/stdout -c 'gpg --batch --gen-key /tmp/genkey' | tee /tmp/listo
 		millave=$(cat /tmp/listo | grep "gpg: clave" | uniq | awk '{print $3}')
 		gpg --export-secret-key -a $millave > /tmp/llaves/$name.$last.private.key
 		gpg --export -a $millave > /tmp/llaves/$name.$last.public.key
 		# gpg -a -o /tmp/llaves/$name.$last.revoke.asc --command-fd 0 --status-fd 2 --gen-revoke 0x$millave
 		if [[ $1 = enviar ]]; then
-			gpg --send-keys --keyserver keyserver.ubuntu.com $millave
+			gpg --keyserver pgp.mit.edu --send-keys $millave
 		fi
 		rm -f /tmp/genkey
 		rm -f /tmp/listo
 	done
 else
-	echo "ERROR: El archivo /tmp/datos.txt no existe"
+	echo "ERROR: El archivo /tmp/datos.txt no existe."
 fi
 
-echo "Proceso finalizado, vaya a /tmp/llaves para ver los archivos..."
+echo "Proceso finalizado, vaya a /tmp/llaves para ver los archivos."
 
 rm -f /run/$(basename $0).pid
 exit 0
