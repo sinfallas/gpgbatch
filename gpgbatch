@@ -30,7 +30,7 @@ if [[ -f /tmp/datos.txt ]]; then
 		echo 'Subkey-Type: 1' >> /tmp/genkey
 		echo 'Subkey-Length:' $long >> /tmp/genkey
 		echo 'Name-Real:' $name $last >> /tmp/genkey
-		echo 'Name-Comment: No comment' >> /tmp/genkey
+		# echo 'Name-Comment: No comment' >> /tmp/genkey
 		echo 'Name-Email:' $email >> /tmp/genkey
 		echo 'Expire-Date:' $expi >> /tmp/genkey
 		echo 'Passphrase:' $pass >> /tmp/genkey
