@@ -1,4 +1,29 @@
-commit 3775d0c25948547e7e4b3956ae3b9c3b5dad3fd7 (HEAD, origin/master, origin/HEAD, master)
+commit 0a8d742fd80dea32ee53791677a180e9979f5578 (HEAD, origin/master, origin/HEAD, master)
+Merge: d804335 b91a8c3
+Author: jose perez <sinfallas@gmail.com>
+Date:   Thu Mar 31 18:07:50 2016 -0430
+
+    Merge branch 'master' of github.com:sinfallas/gpgbatch
+
+commit d8043355963138ed1aa7c1a595e179df25b09d5e
+Author: jose perez <sinfallas@gmail.com>
+Date:   Thu Mar 31 18:07:03 2016 -0430
+
+    * se comenta una linea innecesaria
+
+commit b91a8c3499f3796feb227666847eb0aaa684caf1
+Author: Jose Perez <sinfallas@users.noreply.github.com>
+Date:   Tue Mar 29 08:47:59 2016 -0430
+
+    Update README.md
+
+commit 66b282869ae8462667f5deddc71678fff7b52273 (tag: v0.2.1)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Mar 25 15:28:23 2016 -0430
+
+    * changelog
+
+commit 3775d0c25948547e7e4b3956ae3b9c3b5dad3fd7
 Author: jose perez <sinfallas@gmail.com>
 Date:   Fri Mar 25 15:27:29 2016 -0430
 
