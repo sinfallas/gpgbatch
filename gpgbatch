@@ -19,7 +19,7 @@ fi
 
 if ! [[ -f $HOME/.gnupg/gpg.conf.old ]]; then
 	mv -f $HOME/.gnupg/gpg.conf $HOME/.gnupg/gpg.conf.old
-	echo "keyserver hkp://keys.gnupg.net" > $HOME/.gnupg/gpg.conf
+	echo "keyserver hkp://pool.sks-keyservers.net" > $HOME/.gnupg/gpg.conf
 	echo "fixed-list-mode" >> $HOME/.gnupg/gpg.conf
 	echo "keyid-format 0xlong" >> $HOME/.gnupg/gpg.conf
 	echo "with-fingerprint" >> $HOME/.gnupg/gpg.conf
