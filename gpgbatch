@@ -30,6 +30,7 @@ if ! [[ -f $HOME/.gnupg/gpg.conf.old ]]; then
 	echo "list-options show-uid-validit" >> $HOME/.gnupg/gpg.conf
 	echo "sig-notation issuer-fpr@notations.openpgp.fifthhorseman.net=%g" >> $HOME/.gnupg/gpg.conf
 	echo "cert-digest-algo SHA512" >> $HOME/.gnupg/gpg.conf
+	echo "keyserver-options no-honor-keyserver-url" >> $HOME/.gnupg/gpg.conf
 fi
 
 if [[ -f /tmp/datos.txt ]]; then
