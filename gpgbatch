@@ -7,6 +7,22 @@ function pause() {
 	read -p "$*"
 }
 
+if ! [[ -f /usr/bin/gpg ]] || [[ $(dpkg --get-selections | grep -w "gnupg" | awk '{print $1}' | head -1) != gnupg ]]; then
+	if [[ "$EUID" != "0" ]]; then
+		echo -e "\e[00;31mERROR: Debes ser root.\e[00m"
+		exit 1
+	fi
+	apt-get -q update
+	apt-get -qy install gnupg gpgv
+	echo "Instalacion finalizada..."
+	exit 0
+fi
+
+if [[ "$EUID" = "0" ]]; then
+	echo -e "\e[00;31mERROR: No debe ser root.\e[00m"
+	exit 1
+fi
+
 pause "Presione cualquier tecla para iniciar o Ctrl + C para finalizar..."
 
 if [[ -d /tmp/llaves ]]; then
