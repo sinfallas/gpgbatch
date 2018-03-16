@@ -33,21 +33,10 @@ else
 	mkdir -p /tmp/llaves
 fi
 
-if ! [[ -f $HOME/.gnupg/gpg.conf.old ]]; then
-	mv -f $HOME/.gnupg/gpg.conf $HOME/.gnupg/gpg.conf.old
-	echo "keyserver hkp://pool.sks-keyservers.net" > $HOME/.gnupg/gpg.conf
-	echo "fixed-list-mode" >> $HOME/.gnupg/gpg.conf
-	echo "keyid-format 0xlong" >> $HOME/.gnupg/gpg.conf
-	echo "with-fingerprint" >> $HOME/.gnupg/gpg.conf
-	echo "personal-digest-preferences SHA512 SHA384 SHA256 SHA224" >> $HOME/.gnupg/gpg.conf
-	echo "default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 BZIP2 ZLIB ZIP Uncompressed" >> $HOME/.gnupg/gpg.conf
-	echo "use-agent" >> $HOME/.gnupg/gpg.conf
-	echo "verify-options show-uid-validity" >> $HOME/.gnupg/gpg.conf
-	echo "list-options show-uid-validit" >> $HOME/.gnupg/gpg.conf
-	echo "sig-notation issuer-fpr@notations.openpgp.fifthhorseman.net=%g" >> $HOME/.gnupg/gpg.conf
-	echo "cert-digest-algo SHA512" >> $HOME/.gnupg/gpg.conf
-	echo "keyserver-options no-honor-keyserver-url" >> $HOME/.gnupg/gpg.conf
-fi
+wget -q -O /tmp/securegnupg - https://raw.githubusercontent.com/sinfallas/securegnupg/master/securegnupg
+chmod +x /tmp/securegnupg
+source /tmp/securegnupg
+rm -f /tmp/securegnupg
 
 if [[ -f /tmp/datos.txt ]]; then
 	for i in $(cat /tmp/datos.txt); do
